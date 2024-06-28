@@ -5,7 +5,6 @@ using namespace std;
 
 priority_queue <int> Q;
 
-int arr[100001];
 
 int main(void)
 {
