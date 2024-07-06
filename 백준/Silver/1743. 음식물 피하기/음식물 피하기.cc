@@ -6,6 +6,9 @@ int arr[101][101];
 
 void DFS(int i, int j);
 
+int dx[4]={1,-1,0,0};
+int dy[4]={0,0,1,-1};
+
 int count=0;
 
 int N=0;
@@ -54,24 +57,13 @@ int main(void)
 void DFS(int i, int j)
 {
 	count++;
-	if(arr[i+1][j]==1&&i+1<=N)
+	for(int l=0; l<4; l++)
 	{
-		arr[i+1][j]=0;
-		DFS(i+1,j);
+		if(arr[i+dx[l]][j+dy[l]]==1&&i+dx[l]<=N&&i+dx[l]>0&&j+dy[l]>0&&j+dy[l]<=M)
+		{
+			arr[i+dx[l]][j+dy[l]]=0;
+			DFS(i+dx[l],j+dy[l]);
+		}
 	}
-	if(arr[i-1][j]==1&&i-1>0)
-	{
-		arr[i-1][j]=0;
-		DFS(i-1,j);
-	}
-	if(arr[i][j+1]==1&&j+1<=M)
-	{
-		arr[i][j+1]=0;
-		DFS(i,j+1);
-	}
-	if(arr[i][j-1]==1&&j-1>0)
-	{
-		arr[i][j-1]=0;
-		DFS(i,j-1);
-	}
+	
 }
