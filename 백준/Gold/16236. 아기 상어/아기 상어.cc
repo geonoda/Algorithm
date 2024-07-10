@@ -76,29 +76,6 @@ void BFS(int SL, int SC)
 					tempj=j;
 				}
 			}
-			/*eat++;
-			arr[i][j]=0;
-			sum=sum+distance;
-			for(int l=0; l<21; l++)
-			{
-				for(int k=0; k<21; k++)
-				{
-					visited[l][k]=0;
-				}
-			}
-			while(!Q.empty())
-			{
-				Q.pop();
-				Q2.pop();
-			}
-			
-			Q.push(make_pair(i,j));
-			Q2.push(0);
-			if(eat==level)
-			{
-				level++;
-				eat=0;
-			}*/
 		}
 		else
 		{
