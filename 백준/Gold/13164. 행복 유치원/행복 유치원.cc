@@ -18,8 +18,6 @@ int main(void)
 		cin>>arr[i];
 	}
 	
-	sort(arr,arr+N);
-	
 	int sum=0;
 	
 	for(int i=0; i<N-1; i++)
@@ -27,7 +25,6 @@ int main(void)
 		gap[i]=arr[i+1]-arr[i];
 		sum+=gap[i];
 	}
-	
 	
 	sort(gap,gap+(N-1));
 	
