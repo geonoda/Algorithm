@@ -3,41 +3,40 @@
 using namespace std;
 
 int arr[1001];
-
-int DP[1001][1001];
+int DP[1001];
 
 int main(void)
 {
-	int N=0;
+	int a=0;
 	
-	cin>>N;
+	cin>>a;
 	
-	for(int i=1; i<=N; i++)
+	for(int i=1; i<=a; i++)
 	{
 		cin>>arr[i];
+		DP[i]=987654321;
 	}
 	
-	for(int i=1; i<=N; i++)
+	for(int i=1; i<=a; i++)
 	{
-		DP[1][i]=arr[1]*i;
-	}
-	
-	for(int i=2; i<=N; i++)
-	{
-		for(int j=1; j<=N; j++)
+		for(int j=1; j<=a; j++)
 		{
-			DP[i][j]=DP[i-1][j];
-			if(j/i>=1)
+			if(i-j>=0)
 			{
-				if(DP[i][j]>DP[i][j-i]+arr[i])
+				if(DP[i]>arr[j]+DP[i-j])
 				{
-					DP[i][j]=DP[i][j-i]+arr[i];
+					DP[i]=arr[j]+DP[i-j];
 				}
+				
+			}
+			else
+			{
+				break;
 			}
 		}
 	}
 	
-	cout<<DP[N][N];
+	cout<<DP[a];
 	
 	return 0;
 }
