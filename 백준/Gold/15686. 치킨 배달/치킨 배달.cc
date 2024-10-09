@@ -48,13 +48,6 @@ void DFS(int count, int pre)
 			}
 		}
 		
-		for(int i=0; i<50; i++)
-		{
-			if(visited[i]==1)
-			{
-				arr2[V[i].first][V[i].second]=2;
-			}
-		}
 		int distance=0;
 		
 		for(int i=1; i<=N; i++)
@@ -68,7 +61,6 @@ void DFS(int count, int pre)
 					{
 						if(visited[k]==1)
 						{
-							//cout<<V[k].first<<" "<<V[k].second<<endl;
 							int x=i-V[k].first;
 							int y=j-V[k].second;
 							if(x<0)
