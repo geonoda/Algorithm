@@ -10,7 +10,6 @@ int result=987654321;
 void DFS(int count, int pre);
 int main(void)
 {
-	
 	cin>>N>>M;
 	
 	for(int i=1; i<=N; i++)
@@ -20,8 +19,7 @@ int main(void)
 			cin>>arr[i][j];
 			if(arr[i][j]==2)
 			{
-				V.push_back({i,j});	
-				arr[i][j]=0; 
+				V.push_back({i,j});
 			}
 		}
 	}
@@ -38,23 +36,13 @@ void DFS(int count, int pre)
 {
 	if(count==M)//백터에서 치킨집을 꺼내서 거리를 찾는다. 
 	{
-		int arr2[51][51]={0};
-		
-		for(int i=1; i<=N; i++)
-		{
-			for(int j=1; j<=N; j++)
-			{
-				arr2[i][j]=arr[i][j];
-			}
-		}
-		
 		int distance=0;
 		
 		for(int i=1; i<=N; i++)
 		{
 			for(int j=1; j<=N; j++)
 			{
-				if(arr2[i][j]==1)
+				if(arr[i][j]==1)
 				{
 					int temp=987654321;
 					for(int k=0; k<50; k++)
