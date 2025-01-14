@@ -18,7 +18,6 @@ int main(void)
 	for (int i = 0; i < C; i++)
 	{
 		cin >> arr[i];
-		result[i] = ' ';
 	}
 
 	sort(arr, arr + C);
@@ -36,7 +35,7 @@ void DFS(int start, int num1, int num2, int count)
 		{
 			for (int i = 0; i < C; i++)
 			{
-				if (result[i] != ' ')
+				if (result[i] != '\0')
 				{
 					cout << result[i];
 				}
@@ -60,7 +59,7 @@ void DFS(int start, int num1, int num2, int count)
 				{
 					DFS(i,num1, num2+1, count + 1);
 				}
-				result[i] = ' ';
+				result[i] = '\0';
 				visited[i] = 0;
 			}
 		}
