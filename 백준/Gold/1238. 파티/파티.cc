@@ -11,9 +11,21 @@ int main() {
     int N, M, X;
     cin >> N >> M >> X;
 
-    // 모든 값을 INF로 초기화
-    fill(&arr[0][0], &arr[1000][1001], INF);
+    for (int i = 1; i <= N; i++)
+    {
+        for (int j = 1; j <= N; j++)
+        {
+            if (i == j)
+            {
+                arr[i][j] = 0;
+            }
+            else
+            {
+                arr[i][j] = INF;
+            }
 
+        }
+    }
     for (int i = 1; i <= N; i++) {
         arr[i][i] = 0; // 대각선 값은 0
     }
