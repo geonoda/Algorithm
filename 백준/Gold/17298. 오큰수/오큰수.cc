@@ -1,37 +1,49 @@
 #include <iostream>
-#include <stack>
+#include <vector>
+
 using namespace std;
-int arr[1000001];
-int NGE[1000001];
+
+vector<pair<int, int>> arr;
+int result[1000000];
 int main(void)
 {
-	stack<int> s;
-	int a=0;
-	cin>>a;
-	for(int i=0; i<a; i++)
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	int N = 0;
+	cin >> N;
+	int idx = 0;
+	for (int i = 0; i < N; i++)
 	{
-		cin>>arr[i];
-	}
-	
-	for(int i=a-1; i>=0; i--)
-	{
-		while(!s.empty()&&s.top()<=arr[i])//만약 arr[i]가 6이고 스택의 모습이 5, 8이면?? 5를 팝해야겠지? 
+		int num = 0;
+		cin >> num;
+		for (int j = arr.size()-1; j >= 0; j--)
 		{
-			s.pop();
+			if (arr[j].first < num)
+			{
+				if (result[arr[j].second] == 0)
+				{
+					result[arr[j].second] = num;
+					arr.pop_back();
+				}
+			}
+			else
+			{
+				break;
+			}
 		}
-		if(s.empty())
+		arr.push_back({ num,i });
+	}
+
+	for (int i = 0; i < N; i++)
+	{
+		if (result[i] == 0)
 		{
-			NGE[i]=-1;
+			cout << -1 << " ";
 		}
 		else
 		{
-			NGE[i]=s.top();
+			cout << result[i] << " ";
 		}
-		s.push(arr[i]);
-	}
-	for(int i=0; i<a; i++)
-	{
-		cout<<NGE[i]<<" ";
 	}
 	return 0;
-}
+}// 3 5 2 3 7
