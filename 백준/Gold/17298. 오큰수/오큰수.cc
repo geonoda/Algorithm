@@ -20,11 +20,8 @@ int main(void)
 		{
 			if (arr[j].first < num)
 			{
-				if (result[arr[j].second] == 0)
-				{
-					result[arr[j].second] = num;
-					arr.pop_back();
-				}
+				result[arr[j].second] = num;
+				arr.pop_back();
 			}
 			else
 			{
