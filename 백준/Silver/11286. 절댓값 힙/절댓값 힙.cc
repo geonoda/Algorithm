@@ -3,78 +3,65 @@
 
 using namespace std;
 
-struct num{
-	int id;
-	num(int m)
-	{
-		this->id=m;
-	}
-	bool operator<(const num s) const {//s가 새로 추가되는 객체를 의미함
-		if(s.id<0)
-		{
-			if(this->id>0)
-			{
-				if(this->id==-s.id)
-				{
-					return this->id > s.id;
-				}
-				return this->id > -s.id;
-			}
-			else if(this->id<0)
-			{
-				return -this->id > -s.id;
-			}
-			
-			
-		}
-		else
-		{
-			if(this->id<0)
-			{
-				return -this->id>s.id;
-			 }
-			 else
-			 {
-			 	return this->id > s.id;
-			 }
-		}
-		
-		
-	}
-};
+priority_queue<int>ppq;
+priority_queue<int>mpq;
 
 int main(void)
 {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
-	int a=0;
-	cin>>a;
-	priority_queue<num> pq;
-	
-	for(int i=0; i<a; i++)
+	int N = 0;
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
 	{
-		int b=0;
-		cin>>b;
-		if(b==0)
+		int num = 0;
+		cin >> num;
+		if (num != 0)
 		{
-			if(pq.empty())
+			if (num < 0)
 			{
-				cout<<0<<'\n';
+				mpq.push(num);
 			}
 			else
 			{
-				num temp=pq.top();
-				cout<<temp.id<<'\n';
-				pq.pop();
+				ppq.push(-num);
 			}
 		}
 		else
 		{
-			pq.push(num(b));
+			if (!ppq.empty() || !mpq.empty())
+			{
+				if (ppq.empty())
+				{
+					cout << mpq.top() << '\n';
+					mpq.pop();
+				}
+				else if (mpq.empty())
+				{
+					cout<< -ppq.top() << '\n';
+					ppq.pop();
+				}
+				else
+				{
+					if (ppq.top() > mpq.top())
+					{
+						cout << -ppq.top() << '\n';
+						ppq.pop();
+					}
+					else
+					{
+						cout << mpq.top() << '\n';
+						mpq.pop();
+					}
+				}
+			}
+			else
+			{
+				cout << 0<<'\n';
+			}
+			
 		}
 	}
-
-	
-	
 	return 0;
 }
