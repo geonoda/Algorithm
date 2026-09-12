@@ -10,9 +10,6 @@ int solution(string s) {
     
     for(int i = 0; i < s.size(); i++)
     {
-        int num1 = 0;
-        int num2 = 0;
-        int num3 = 0;
         queue<char> q;
     
         for(int j = 0; j < s.size(); j++)
@@ -35,59 +32,30 @@ int solution(string s) {
             char c = q.front();
             q.pop();
             
-            if(c == '[')
+            if(c == '[' || c == '(' || c == '{')
             {
-                st.push('[');
+                st.push(c);
             }
-            else if(c == ']')
+            else if(c == ']' || c == ')' || c == '}')
             {
                 if(st.empty())
                 {
                     sig = false;
                     break;
                 }
-                if(st.top() != '[')
-                {
-                    break;
-                }
-                else 
-                {
-                    st.pop();
-                }
-            }
-            else if(c == '(')
-            {
-                st.push('(');
-            }
-            else if(c == ')')
-            {
-                if(st.empty())
+                if(c == ']' && st.top() != '[')
                 {
                     sig = false;
                     break;
                 }
-                if(st.top() != '(')
-                {
-                    break;
-                }
-                else 
-                {
-                    st.pop();
-                }
-            }
-            else if(c == '{')
-            {
-                st.push('{');
-            }
-            else if(c == '}')
-            {
-                if(st.empty())
+                else if(c == ')' && st.top() != '(')
                 {
                     sig = false;
                     break;
                 }
-                if(st.top() != '{')
+                else if(c == '}' && st.top() != '{')
                 {
+                    sig = false;
                     break;
                 }
                 else 
